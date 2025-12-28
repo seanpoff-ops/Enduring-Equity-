@@ -25,7 +25,8 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      "@": path.resolve(import.meta.dirname, "src"),
+      // point "@" at the repo root, where main.tsx, components, hooks, etc. live
+      "@": path.resolve(import.meta.dirname),
       "@shared": path.resolve(import.meta.dirname, "shared"),
       "@assets": path.resolve(import.meta.dirname, "attached_assets"),
     },
@@ -35,7 +36,7 @@ export default defineConfig({
       plugins: [],
     },
   },
-  // root is now the repo root (where index.html lives), so we don't set it
+  // root = repo root (where index.html is), so we don't set a custom root
   build: {
     // output built site into /dist
     outDir: path.resolve(import.meta.dirname, "dist"),
